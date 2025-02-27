@@ -4,9 +4,13 @@ import java.util.*;
 
 public class SumOfOddEven {
     public static void main(String[] args) {
+        int[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
 
-
-        System.out.println(rangeSum(new int[]{1,2,3,4}, 4, 2,5));
+        rotateImage(matrix);
     }
 
 
@@ -496,5 +500,30 @@ if(list.size() <= k){
         }
 
         return ans;
+    }
+
+    public static void rotateImage(int[][] arr){
+        int n = arr.length;
+
+        for(int i=0; i<n; i++){
+            for(int j =i+1; j<n; j++){
+                int temp = arr[i][j];
+                arr[i][j] = arr[j][i];
+                arr[j][i] = temp;
+            }
+        }
+        int m = n-1;
+
+
+        for(int i=0; i<n/2; i++){
+
+            for(int j =0; j<n/2; j++){
+                int temp = arr[i][j];
+                arr[i][j] = arr[i][m];
+                arr[i][m] = temp;
+                m-=1;
+            }
+            m= n-1;
+        }
     }
     }
