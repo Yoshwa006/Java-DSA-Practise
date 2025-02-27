@@ -1,0 +1,500 @@
+package Arrays.Practice;
+
+import java.util.*;
+
+public class SumOfOddEven {
+    public static void main(String[] args) {
+
+
+        System.out.println(rangeSum(new int[]{1,2,3,4}, 4, 2,5));
+    }
+
+
+    static void sumofevenodd(int[] arr) {
+        int n = arr.length;
+        int pos = 1;
+        int even = 0;
+        int odd = 0;
+        for (int j : arr) {
+            if (pos % 2 == 0) {
+                even += j;
+            } else {
+                odd += j;
+            }
+            pos++;
+        }
+        System.out.println("Even : " + even);
+        System.out.println("Odd : " + odd);
+        int[] ar = {1, 2, 3, 4, 5, 2, 4, 2, 45, 2, 1, 56, 3, 2};
+    }
+
+    public static int reverse(int n) {
+        String str = String.valueOf(n);
+        StringBuilder st = new StringBuilder(str);
+        st.reverse();
+
+        return Integer.parseInt(String.valueOf(st));
+    }
+
+    public static int[] reverseUsingHash(int[] arr) {
+        HashSet<Integer> list = new HashSet<>();
+
+        for (int i : arr) {
+            list.add(i);
+        }
+
+        int[] intArray = list.stream().mapToInt(Integer::intValue).toArray();
+
+        return intArray;
+    }
+
+    public static String reverseString(char[] s) {
+        int l = 0;
+        int r = s.length - 1;
+
+        while (l < r) {
+            char temp = s[l];
+            s[l] = s[r];
+            s[r] = temp;
+            l++;
+            r--;
+        }
+
+        String fin = new String(s);
+
+        return fin;
+    }
+
+
+    public static String reverse(String s, int k) {
+        int l = 0, r = s.length() - 1;
+        char[] ch = s.toCharArray();
+        while (l < r) {
+            char temp = ch[l];
+            ch[l] = ch[r];
+            ch[r] = temp;
+
+            r -= k;
+            l += k;
+        }
+
+        return new String(ch);
+    }
+
+    public static void RemoveDuplicates(int[] arr) {
+        int n = arr.length - 1;
+        int l = 1;
+        int r = 2;
+
+        while (r < n) {
+            if (arr[l] == arr[r]) {
+                r++;
+            } else {
+                int temp = arr[l];
+                arr[l] = arr[r];
+                arr[r] = temp;
+                l++;
+            }
+        }
+        int[] res = new int[r];
+        for (int m : arr) {
+            res[m] = arr[m];
+        }
+        for (int j : res) {
+            System.out.print(res[j] + " ");
+        }
+    }
+
+    public static int[] removeusinghash(int[] arr) {
+        int n = arr.length;
+
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            set.add(arr[i]);
+        }
+        int[] array = set.stream().mapToInt(Integer::intValue).toArray();
+
+        return array;
+
+    }
+
+    public static boolean monotonic(int[] arr) {
+        boolean even;
+        boolean odd;
+        return even = true;
+    }
+
+    public static boolean isSameAfterReversals(int num) {
+        int res = 0;
+        int res2 = 0;
+        while (num != 0) {
+            int rem = num % 10;
+            res = (res * 10) + rem;
+            num /= 10;
+        }
+
+        int g = res;
+        while (g != 0) {
+            int rem2 = g % 10;
+            res2 = (res2 * 10) + rem2;
+            g /= 10;
+        }
+        return res2 == res;
+    }
+
+    public static int[] Two_Sum(int[] arr, int target) {
+        Arrays.sort(arr);
+
+        int l = 0, r = arr.length - 1;
+
+        while (l < r) {
+            int sum = arr[l] + arr[r];
+
+            if (sum == target) {
+                return new int[]{l, r};
+            } else if (sum < target) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+        return new int[]{};
+    }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        Arrays.sort(nums);
+
+        int l = 0, r = nums.length - 1;
+
+        while (l < r) {
+            int sum = nums[l] + nums[r];
+            if (sum == target) {
+                return new int[]{l, r};
+            } else if (sum < target) {
+                l++;
+            } else {
+                r--;
+            }
+        }
+
+        return new int[]{};
+    }
+
+    public static int[] Two_Sum_usingHash(int[] arr, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            int k = target - arr[i];
+
+            if (map.containsKey(k)) {
+                return new int[]{map.get(k), i};
+            }
+            map.put(arr[i], i);
+        }
+        return new int[]{};
+    }
+
+    public static int romanToInt(String s) {
+        HashMap<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+        char[] ch = s.toCharArray();
+        int sum = 0;
+        for (int i = 0; i < ch.length; i++) {
+            sum += map.get(ch[i]);
+        }
+
+        return sum;
+    }
+
+    public static String AddNum(String num1, String num2) {
+        int j;
+        int h = j = 0;
+
+        for (int i = 0; i < num1.length(); i++) {
+
+        }
+
+        return "ji";
+    }
+
+    public static boolean isBoomerang(int[][] arr) {
+        try {
+            if ((arr[1][1] - arr[0][1]) / (arr[1][0] - arr[0][0]) ==
+                    (arr[2][1] - arr[1][1]) / (arr[2][0] - arr[1][0])) {
+                return false;
+            }
+        } catch (ArithmeticException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public static int minStoneSum(int[] arr, int k) {
+        int max = 0;
+        for (int i = 0; i < k; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[j] > max) {
+                    max = arr[j];
+                }
+            }
+            int h = (int) (double) (arr[max] / 2);
+            arr[max] = h;
+        }
+        int sum = 0;
+        for (int num : arr) {
+            sum = sum + num;
+        }
+
+        return sum;
+    }
+
+    public static int majorityElement(int[] arr) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        return 0;
+    }
+
+    public  static void findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] arr = new int[nums1.length + nums2.length];
+
+
+        int i = 0;
+        int j = nums1.length ;
+        for (int num : nums1) {
+            arr[i] = num;
+            i++;
+        }
+
+        for (int num : nums2) {
+            arr[j] = num;
+            j++;
+        }
+
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static List<String> fizzBuzz(int n) {
+        List<String> list = new ArrayList<>();
+        int k =1;
+        while(k <=n){
+            if (k % 3 == 0 && k % 5 == 0) {
+                list.add("FizzBuzz");
+            } else if (k % 3 == 0) {
+                list.add("Fizz");
+            } else if (k % 5 == 0) {
+                list.add("Buzz");
+            } else {
+                String s = String.valueOf(k);
+                list.add(s);
+            }
+            k++;
+        }
+
+        return list;
+    }
+
+
+    public static int[]  storing_max_subarray(int[] arr, int k){
+        int curr =0;
+        int max = 0;
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i <arr.length; i++){
+            curr= arr[i];
+            list.add(curr);
+            for(int j=i+1; j<arr.length; j++){
+                curr+= arr[j];
+                list.add(curr);
+            }
+        }
+       Collections.sort(list, Collections.reverseOrder());
+
+int[] f = new int[k];
+        for(int i=0; i<k; i++){
+            f[i] = list.get(i);
+        }
+
+        return f;
+    }
+
+    public static int sumOfDig(int[][] arr){
+        int k=0;
+        int sum =0;
+
+
+        while(k <arr.length){
+            sum += arr[k][k];
+            k++;
+        }
+
+        return sum;
+    }
+
+    public static int findKthPositive(int[] arr, int k) {
+
+
+        HashSet<Integer> set = new HashSet<>();
+        List<Integer> missingNumbers = new ArrayList<>();
+
+        // Add all array elements to the set
+        for (int num : arr) {
+            set.add(num);
+        }
+
+        // Check for missing numbers from 1 to n
+        for (int i = 1; i <= arr[arr.length-1]; i++) {
+            if (!set.contains(i)) {
+                missingNumbers.add(i);
+            }
+        }
+        if(missingNumbers.isEmpty()){
+            return arr[arr.length-1] +k;
+        }
+
+        return missingNumbers.get(k-1);
+    }
+    public static int[] plusOne(int[] arr) {
+        int n = arr.length;
+
+        // Start from the last digit and add 1
+        for (int i = n - 1; i >= 0; i--) {
+            if (arr[i] < 9) {
+                arr[i] = arr[i] + 1;  // No carry, just return the array
+                return arr;
+            }
+            arr[i] = 0;  // If the digit is 9, set it to 0 and continue to the next digit
+        }
+
+        int[] result = new int[n + 1];
+        result[0] = 1;
+        return result;
+    }
+    public static boolean hehehe(int[] arr, int k) {
+        if(k ==0 ){
+            return true;
+        }
+        int count =0;
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] == 1 && i ==0){
+                continue;
+            }
+            if(arr[i] ==0){
+                count++;
+            }
+            else if(arr[i] ==1){
+                if(count>=k){
+                    count =0;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static int kthFactor(int n, int k) {
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(int i=1; i<=n; i++){
+            if(n%i ==0){
+                list.add(i);
+            }
+        }
+if(list.size() <= k){
+    return list.get(k-1);
+}
+        return list.get(k);
+    }
+
+
+
+    public static int SumOfConsectiveDigits(int n){
+        String s = String.valueOf(n);
+
+        int len = s.length();
+        int sum =0;
+
+        while(n!=0){
+            if(len %2 ==0){
+                sum-= n%10;
+            }
+
+            else{
+                sum+=n%10;
+            }
+            len--;
+            n/= 10;
+        }
+
+        return sum;
+    }
+    public static int SumOfConsectiveDigitsUsingRec(int n, boolean cas){
+        if (n == 0) {
+            return 0;
+        }
+
+        int digit = n % 10;
+
+        if (cas) {
+            return -digit + SumOfConsectiveDigitsUsingRec(n / 10, false);
+        } else {
+            return digit - SumOfConsectiveDigitsUsingRec(n / 10, true);
+        }
+    }
+
+        public static int[] two553(int[] arr){
+        ArrayList<Integer> list = new ArrayList<>();
+
+
+        for(int num :arr){
+            ArrayList<Integer> temp = new ArrayList<>(); // Store digits in correct order
+            while (num != 0) {
+                temp.add(num % 10);
+                num /= 10;
+            }
+            Collections.reverse(temp);
+            list.addAll(temp);
+        }
+            int[] array = new int[list.size()];
+            for (int i = 0; i < list.size(); i++) {
+                array[i] = list.get(i);
+            }
+            return array;
+    }
+
+    public static int rangeSum(int[] arr, int n, int left, int right) {
+
+        List<Integer> list = new ArrayList<>();
+        int sum =0;
+
+        for(int i= 0; i<n; i++){
+            for(int j =i; j<n; j++){
+                for(int k = i; k<=j; k++){
+                    sum += arr[k];
+                }
+                list.add(sum);
+                sum =0;
+            }
+        }
+
+        Collections.sort(list);
+
+        int ans = 0;
+        for(int i = left; i<=right; i++){
+            ans +=list.get(i-1);
+        }
+
+        return ans;
+    }
+    }
