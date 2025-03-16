@@ -4,13 +4,7 @@ import java.util.*;
 
 public class SumOfOddEven {
     public static void main(String[] args) {
-        int[][] matrix = {
-                {1, 2, 3},
-                {4, 5, 6},
-                {7, 8, 9}
-        };
-
-        rotateImage(matrix);
+        System.out.println(isPalindrome(6467576));
     }
 
 
@@ -122,12 +116,6 @@ public class SumOfOddEven {
 
     }
 
-    public static boolean monotonic(int[] arr) {
-        boolean even;
-        boolean odd;
-        return even = true;
-    }
-
     public static boolean isSameAfterReversals(int num) {
         int res = 0;
         int res2 = 0;
@@ -221,17 +209,6 @@ public class SumOfOddEven {
         return sum;
     }
 
-    public static String AddNum(String num1, String num2) {
-        int j;
-        int h = j = 0;
-
-        for (int i = 0; i < num1.length(); i++) {
-
-        }
-
-        return "ji";
-    }
-
     public static boolean isBoomerang(int[][] arr) {
         try {
             if ((arr[1][1] - arr[0][1]) / (arr[1][0] - arr[0][0]) ==
@@ -310,7 +287,7 @@ public class SumOfOddEven {
     }
 
 
-    public static int[]  storing_max_subarray(int[] arr, int k){
+    public static int[] storing_max_subarray(int[] arr, int k){
         int curr =0;
         int max = 0;
         List<Integer> list = new ArrayList<>();
@@ -526,4 +503,16 @@ if(list.size() <= k){
             m= n-1;
         }
     }
+
+    public static boolean isPalindrome(int n){
+        int res = n;
+        int res2=0;
+        while(n != 0){
+            int rem = n%10;
+            res2 = (res2*10) + rem;
+            n/=10;
+        }
+        return res == res2;
     }
+
+}

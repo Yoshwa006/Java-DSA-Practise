@@ -56,6 +56,6 @@ public class ShortestPathBFS {
         adj.get(2).add(4); adj.get(4).add(2);
         adj.get(3).add(5); adj.get(5).add(3);
 
-        findShortestPath(n, adj, 0, 5); // Find shortest path from node 0 to 4
+        findShortestPath(n, adj, 0, 6); // Find shortest path from node 0 to 4
     }
 }
