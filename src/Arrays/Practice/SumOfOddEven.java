@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SumOfOddEven {
     public static void main(String[] args) {
-        System.out.println(isPalindrome(6467576));
+        LongestNiceSubArray(new int[]{1,2,3});
     }
 
 
@@ -515,4 +515,13 @@ if(list.size() <= k){
         return res == res2;
     }
 
+    public static void LongestNiceSubArray(int[] arr){
+       int l = 0;
+       int max =0;
+
+       for(int r = l+1; r<arr.length; r++ ){
+            
+       }
+       
+    }
 }
