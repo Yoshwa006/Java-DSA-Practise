@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SumOfOddEven {
     public static void main(String[] args) {
-        LongestNiceSubArray(new int[]{1,2,3});
+        // LongestNiceSubArray(new int[]{1,2,3});
     }
 
 
@@ -515,13 +515,28 @@ if(list.size() <= k){
         return res == res2;
     }
 
-    public static void LongestNiceSubArray(int[] arr){
-       int l = 0;
-       int max =0;
+    // public static void LongestNiceSubArray(int[] arr){
+    //    int l = 0;
+    //    int max =0;
 
-       for(int r = l+1; r<arr.length; r++ ){
+    //    for(int r = l+1; r<arr.length; r++ ){
             
-       }
+    //    }
        
+    // }
+
+    public static int Stock(int[] arr){
+        int l= 0, r =1;
+        int ans =Integer.MIN_VALUE;
+        while(l<r){
+            if(arr[l] < arr[r]){
+                l++;
+                r++;
+            }
+            else if(arr[r] >= arr[l]){
+                ans = Math.max(ans, arr[r] - arr[l]);
+            }
+        }
+        return ans;
     }
 }

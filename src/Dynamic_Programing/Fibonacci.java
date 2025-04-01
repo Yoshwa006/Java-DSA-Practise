@@ -5,20 +5,6 @@ import java.util.HashSet;
 
 public class Fibonacci {
     public static void main(String[] args) {
-        int[] arr ={2,3,5,7,9};
-//        System.out.println(two_sum(arr,13));
-
-//        System.out.println(checksortedusingrec(new int[]{1,2,3,4,5}, 0));
-
-//        System.out.println(search(new int[] {1,2,3,4,5}, 0,4));
-
-//        System.out.println(sum(new int[]{1,2,3,4,8},0,0));
-
-//        System.out.println(power(2,3,1));
-//        print(12,1);
-
-//        System.out.println(max_in_array(new int[]{1,2,4,6,9,5,3,5},0,0));
-        System.out.println(sum_of_digits(12661,0));
     }
 
 
@@ -120,5 +106,22 @@ public class Fibonacci {
         return sum_of_digits(n/10,sum+rem);
     }
 
+    private  static long rec(int i,int[][] questions,long[] dp,int n)
+    {
+        if(i>=n) return 0;
+        if(dp[i]!=-1) return dp[i];
+
+        long take = questions[i][0] + rec(i+questions[i][1]+1,questions,dp,n);
+        long dont = rec(i+1,questions,dp,n);
+
+        return dp[i] = Math.max(take,dont);
+
+    }
+    public static long mostPoints(int[][] questions) {
+        int n = questions.length;
+        long[] dp = new long[n];
+        Arrays.fill(dp,-1);
+        return rec(0,questions,dp,n);
+    }
 
 }
