@@ -4,8 +4,10 @@ public class checklastlettter {
 
     public static void main(String[] args) {
 
-        System.out.println(reverseOnlyLetters("ab-cd"));
+//        System.out.println(reverseOnlyLetters("ab-cd"));
+        System.out.println(lemonadeChange(new int[]{5,5,5,10,20}));
     }
+
     public static void isPalindrome(String s) {
         String f = s.replaceAll("[^a-zA-Z]", "").toLowerCase();
         System.out.println(f);
@@ -57,5 +59,73 @@ public class checklastlettter {
 
         return "hvy";
     }
-    
+    public static String id (String str){
+
+
+        StringBuilder ans = new StringBuilder();
+
+
+        for(int i =0; i<str.length(); i++){
+            int mul =0;
+            StringBuilder ex = new StringBuilder();
+            char ch = str.charAt(i);
+
+
+            if(Character.isDigit(ch)){
+                mul = ch - '0';
+                i++;
+            }
+
+            if (str.charAt(i) == '[') {
+                i++;
+                while(str.charAt(i) != ']'){
+                    ex.append(str.charAt(i));
+                    i++;
+                }
+                ans.append(String.valueOf(ex).repeat(mul));
+            }
+
+
+
+        }
+
+        return new String(ans);
+    }
+    public static boolean lemonadeChange(int[] arr) {
+        int f = 0;
+        int t =0;
+       for( int num: arr){
+
+           if(num== 5){
+               f++;
+           }
+
+           if(num== 10){
+               t++;
+               if(f>0){
+                   f--;
+               }
+               else{
+                   return false;
+               }
+           }
+
+            if(num == 20){
+                if(t>0 && f>0){
+                    t--;
+                    f--;
+                    continue;
+                }
+                else if(t==0 && f>3){
+                    f = f-3;
+                    continue;
+                }
+                else{
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
 }

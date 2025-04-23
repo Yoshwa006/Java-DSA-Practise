@@ -26,18 +26,18 @@ public class GraphDFS {
         bfs(0); // Start DFS from node 0
     }
 
-//    static void dfs(int node) {
-//        // Mark the node as visited
-//        visited[node] = true;
-//        System.out.print(node + " ");
-//
-//        // Visit all unvisited neighbors
-//        for (int neighbor : graph.get(node)) {
-//            if (!visited[neighbor]) {
-//                dfs(neighbor);
-//            }
-//        }
-//    }
+    static void dfs(int node) {
+        // Mark the node as visited
+        visited[node] = true;
+        System.out.print(node + " ");
+
+        // Visit all unvisited neighbors
+        for (int neighbor : graph.get(node)) {
+            if (!visited[neighbor]) {
+                dfs(neighbor);
+            }
+        }
+    }
 
     public static void bfs(int node){
 

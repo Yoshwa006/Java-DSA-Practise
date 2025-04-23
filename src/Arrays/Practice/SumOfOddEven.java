@@ -5,6 +5,7 @@ import java.util.*;
 public class SumOfOddEven {
     public static void main(String[] args) {
         // LongestNiceSubArray(new int[]{1,2,3});
+        System.out.println(subarraySum(new int[]{1,2,3,7,5}, 12));
     }
 
 
@@ -246,12 +247,12 @@ public class SumOfOddEven {
         return 0;
     }
 
-    public  static void findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public static void findMedianSortedArrays(int[] nums1, int[] nums2) {
         int[] arr = new int[nums1.length + nums2.length];
 
 
         int i = 0;
-        int j = nums1.length ;
+        int j = nums1.length;
         for (int num : nums1) {
             arr[i] = num;
             i++;
@@ -268,8 +269,8 @@ public class SumOfOddEven {
 
     public static List<String> fizzBuzz(int n) {
         List<String> list = new ArrayList<>();
-        int k =1;
-        while(k <=n){
+        int k = 1;
+        while (k <= n) {
             if (k % 3 == 0 && k % 5 == 0) {
                 list.add("FizzBuzz");
             } else if (k % 3 == 0) {
@@ -287,34 +288,34 @@ public class SumOfOddEven {
     }
 
 
-    public static int[] storing_max_subarray(int[] arr, int k){
-        int curr =0;
+    public static int[] storing_max_subarray(int[] arr, int k) {
+        int curr = 0;
         int max = 0;
         List<Integer> list = new ArrayList<>();
-        for(int i=0;i <arr.length; i++){
-            curr= arr[i];
+        for (int i = 0; i < arr.length; i++) {
+            curr = arr[i];
             list.add(curr);
-            for(int j=i+1; j<arr.length; j++){
-                curr+= arr[j];
+            for (int j = i + 1; j < arr.length; j++) {
+                curr += arr[j];
                 list.add(curr);
             }
         }
-       Collections.sort(list, Collections.reverseOrder());
+        Collections.sort(list, Collections.reverseOrder());
 
-int[] f = new int[k];
-        for(int i=0; i<k; i++){
+        int[] f = new int[k];
+        for (int i = 0; i < k; i++) {
             f[i] = list.get(i);
         }
 
         return f;
     }
 
-    public static int sumOfDig(int[][] arr){
-        int k=0;
-        int sum =0;
+    public static int sumOfDig(int[][] arr) {
+        int k = 0;
+        int sum = 0;
 
 
-        while(k <arr.length){
+        while (k < arr.length) {
             sum += arr[k][k];
             k++;
         }
@@ -334,17 +335,18 @@ int[] f = new int[k];
         }
 
         // Check for missing numbers from 1 to n
-        for (int i = 1; i <= arr[arr.length-1]; i++) {
+        for (int i = 1; i <= arr[arr.length - 1]; i++) {
             if (!set.contains(i)) {
                 missingNumbers.add(i);
             }
         }
-        if(missingNumbers.isEmpty()){
-            return arr[arr.length-1] +k;
+        if (missingNumbers.isEmpty()) {
+            return arr[arr.length - 1] + k;
         }
 
-        return missingNumbers.get(k-1);
+        return missingNumbers.get(k - 1);
     }
+
     public static int[] plusOne(int[] arr) {
         int n = arr.length;
 
@@ -361,66 +363,64 @@ int[] f = new int[k];
         result[0] = 1;
         return result;
     }
+
     public static boolean hehehe(int[] arr, int k) {
-        if(k ==0 ){
+        if (k == 0) {
             return true;
         }
-        int count =0;
-        for(int i=0; i<arr.length; i++){
-            if(arr[i] == 1 && i ==0){
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == 1 && i == 0) {
                 continue;
             }
-            if(arr[i] ==0){
+            if (arr[i] == 0) {
                 count++;
-            }
-            else if(arr[i] ==1){
-                if(count>=k){
-                    count =0;
-                }
-                else {
+            } else if (arr[i] == 1) {
+                if (count >= k) {
+                    count = 0;
+                } else {
                     return false;
                 }
             }
         }
         return true;
     }
+
     public static int kthFactor(int n, int k) {
         ArrayList<Integer> list = new ArrayList<>();
 
-        for(int i=1; i<=n; i++){
-            if(n%i ==0){
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
                 list.add(i);
             }
         }
-if(list.size() <= k){
-    return list.get(k-1);
-}
+        if (list.size() <= k) {
+            return list.get(k - 1);
+        }
         return list.get(k);
     }
 
 
-
-    public static int SumOfConsectiveDigits(int n){
+    public static int SumOfConsectiveDigits(int n) {
         String s = String.valueOf(n);
 
         int len = s.length();
-        int sum =0;
+        int sum = 0;
 
-        while(n!=0){
-            if(len %2 ==0){
-                sum-= n%10;
-            }
-
-            else{
-                sum+=n%10;
+        while (n != 0) {
+            if (len % 2 == 0) {
+                sum -= n % 10;
+            } else {
+                sum += n % 10;
             }
             len--;
-            n/= 10;
+            n /= 10;
         }
 
         return sum;
     }
-    public static int SumOfConsectiveDigitsUsingRec(int n, boolean cas){
+
+    public static int SumOfConsectiveDigitsUsingRec(int n, boolean cas) {
         if (n == 0) {
             return 0;
         }
@@ -434,11 +434,11 @@ if(list.size() <= k){
         }
     }
 
-        public static int[] two553(int[] arr){
+    public static int[] two553(int[] arr) {
         ArrayList<Integer> list = new ArrayList<>();
 
 
-        for(int num :arr){
+        for (int num : arr) {
             ArrayList<Integer> temp = new ArrayList<>(); // Store digits in correct order
             while (num != 0) {
                 temp.add(num % 10);
@@ -447,70 +447,70 @@ if(list.size() <= k){
             Collections.reverse(temp);
             list.addAll(temp);
         }
-            int[] array = new int[list.size()];
-            for (int i = 0; i < list.size(); i++) {
-                array[i] = list.get(i);
-            }
-            return array;
+        int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            array[i] = list.get(i);
+        }
+        return array;
     }
 
     public static int rangeSum(int[] arr, int n, int left, int right) {
 
         List<Integer> list = new ArrayList<>();
-        int sum =0;
+        int sum = 0;
 
-        for(int i= 0; i<n; i++){
-            for(int j =i; j<n; j++){
-                for(int k = i; k<=j; k++){
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                for (int k = i; k <= j; k++) {
                     sum += arr[k];
                 }
                 list.add(sum);
-                sum =0;
+                sum = 0;
             }
         }
 
         Collections.sort(list);
 
         int ans = 0;
-        for(int i = left; i<=right; i++){
-            ans +=list.get(i-1);
+        for (int i = left; i <= right; i++) {
+            ans += list.get(i - 1);
         }
 
         return ans;
     }
 
-    public static void rotateImage(int[][] arr){
+    public static void rotateImage(int[][] arr) {
         int n = arr.length;
 
-        for(int i=0; i<n; i++){
-            for(int j =i+1; j<n; j++){
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
                 int temp = arr[i][j];
                 arr[i][j] = arr[j][i];
                 arr[j][i] = temp;
             }
         }
-        int m = n-1;
+        int m = n - 1;
 
 
-        for(int i=0; i<n/2; i++){
+        for (int i = 0; i < n / 2; i++) {
 
-            for(int j =0; j<n/2; j++){
+            for (int j = 0; j < n / 2; j++) {
                 int temp = arr[i][j];
                 arr[i][j] = arr[i][m];
                 arr[i][m] = temp;
-                m-=1;
+                m -= 1;
             }
-            m= n-1;
+            m = n - 1;
         }
     }
 
-    public static boolean isPalindrome(int n){
+    public static boolean isPalindrome(int n) {
         int res = n;
-        int res2=0;
-        while(n != 0){
-            int rem = n%10;
-            res2 = (res2*10) + rem;
-            n/=10;
+        int res2 = 0;
+        while (n != 0) {
+            int rem = n % 10;
+            res2 = (res2 * 10) + rem;
+            n /= 10;
         }
         return res == res2;
     }
@@ -520,23 +520,58 @@ if(list.size() <= k){
     //    int max =0;
 
     //    for(int r = l+1; r<arr.length; r++ ){
-            
+
     //    }
-       
+
     // }
 
-    public static int Stock(int[] arr){
-        int l= 0, r =1;
-        int ans =Integer.MIN_VALUE;
-        while(l<r){
-            if(arr[l] < arr[r]){
+    public static int Stock(int[] arr) {
+        int l = 0, r = 1;
+        int ans = Integer.MIN_VALUE;
+        while (l < r) {
+            if (arr[l] < arr[r]) {
                 l++;
                 r++;
-            }
-            else if(arr[r] >= arr[l]){
+            } else if (arr[r] >= arr[l]) {
                 ans = Math.max(ans, arr[r] - arr[l]);
             }
         }
         return ans;
+    }
+
+    public static int minimumOperations(int[] arr) {
+        HashSet<Integer> set = new HashSet<>();
+        int count = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (!set.isEmpty() && set.contains(arr[i])) {
+                set.remove(arr[i]);
+                count++;
+            }
+            set.add(arr[i]);
+        }
+
+        return count;
+    }
+
+    static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        int n = arr.length;
+        int sum = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                sum = 0;
+                for (int k = i; k <= j; k++) {
+                    sum += arr[k];
+                    if (sum == target) {
+                        list.add(k);
+                        list.add(j);
+                        return list;
+                    }
+                }
+            }
+        }
+        return null;
     }
 }
