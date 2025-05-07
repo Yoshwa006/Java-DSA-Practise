@@ -5,8 +5,12 @@ import java.util.*;
 public class SumOfOddEven {
     public static void main(String[] args) {
         // LongestNiceSubArray(new int[]{1,2,3});
-        System.out.println(subarraySum(new int[]{1,2,3,7,5}, 12));
+//        System.out.println(subarraySum(new int[]{1, 2, 3, 7, 5}, 12));
+//        System.out.println(digitFive(612575551));
+//        System.out.println(skipA("avyuauyavyusav"));
+        System.out.println(Dominos(new int[]{4,2,2,4}, new int[]{2,4,4,2}));
     }
+
 
 
     static void sumofevenodd(int[] arr) {
@@ -574,4 +578,101 @@ public class SumOfOddEven {
         }
         return null;
     }
+
+    public static int slidingWindow(int[] arr, int k) {
+        int n = arr.length;
+        if (n < k) return Integer.MIN_VALUE; // or handle error
+        int sum = 0;
+        for (int i = 0; i < k; i++) {
+            sum += arr[i];
+        }
+        int max = sum;
+        for (int i = k; i < n; i++) {
+            sum = sum - arr[i - k] + arr[i];
+            max = Math.max(max, sum);
+        }
+        return max;
+    }
+
+//    public static int bomber(char[][] arr){
+//        int n = arr.length;
+//
+//
+//        for(int i =0; i<n; i++){
+//            for(int j = i; )
+//        }
+//    }
+
+    public static int digitFive(int n){
+        if(n == 0){
+            return 0;
+        }
+
+        if(n % 10 == 5){
+            return 1 + digitFive(n/10);
+        }
+        else {
+            return digitFive(n/10);
+        }
+    }
+
+    public static String skipA(String s){
+        StringBuilder ans = new StringBuilder();
+        return helper(s,ans);
+    }
+
+    public static String  helper(String s, StringBuilder ans){
+        if(s.isEmpty()){
+            return "";
+        }
+        if (s.charAt(0) != 'a') {
+            ans.append(s.charAt(0));
+        }
+        helper(s.substring(1), ans);
+        return new String(ans);
+    }
+
+
+    public static String testingMethods(String s){
+        return s.substring(1);
+    }
+
+    public static int Dominos(int[] t, int[] b){
+        int n = t.length;
+        int cnt=0;
+        int in =1 ;
+        for( int i=0; i<n; i++) {
+            if (in == 7) {
+                return -1;
+            }
+            if (t[i] == in || b[i] == in) {
+                if (t[i] != in) {
+                    cnt++;
+                }
+            } else {
+                cnt = 0;
+                i = 0;
+                in++;
+            }
+        }
+        in=1;
+        int bcnt=0;
+            for( int i=0; i<n; i++){
+                if(in == 7){
+                    return -1;
+                }
+                if(t[i] == in || b[i] ==in) {
+                    if (b[i] != in) {
+                        bcnt++;
+                    }
+                }
+                else{
+                    bcnt=0;
+                    i=0;
+                    in++;
+                }
+        }return Math.min(bcnt,cnt);
+    }
+
 }
+

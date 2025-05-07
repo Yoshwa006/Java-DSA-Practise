@@ -1,11 +1,13 @@
 package String;
-
+import java.util.Arrays;
 public class checklastlettter {
 
     public static void main(String[] args) {
 
 //        System.out.println(reverseOnlyLetters("ab-cd"));
-        System.out.println(lemonadeChange(new int[]{5,5,5,10,20}));
+//        System.out.println(lemonadeChange(new int[]{5,5,5,10,20}));
+//        System.out.println(skip5("seedfasasfafafafafaaaaaaarr"));
+        System.out.println(firstUniqChar("loveleetcode"));
     }
 
     public static void isPalindrome(String s) {
@@ -127,5 +129,50 @@ public class checklastlettter {
 
         }
         return true;
+    }
+
+
+    public static String skip5(String s){
+       StringBuilder ans = new StringBuilder();
+       for(int i =0; i<s.length(); i++){
+           if(s.charAt(i) != 'a'){
+               ans.append(s.charAt(i));
+           }
+       }
+
+       return new String(ans);
+    }
+
+    public static int lengthOfLastWord(String s){
+        String[] ans = s.split(" ");
+        String buc = ans[s.length()-1];
+
+        return buc.length();
+    }
+    public static int firstUniqChar(String s) {
+        if(s.length() == 1){
+            return s.charAt(0);
+        }
+        String ss = sort(s);
+        if(ss.charAt(0) != ss.charAt(1)){
+            return 0;
+        }
+        for(int i =1; i<s.length()-1; i++){
+            if(ss.charAt(i) != ss.charAt(i-1) && ss.charAt(i) != ss.charAt(i+1)){
+                return i;
+            }
+        }
+        if(ss.charAt(ss.length() -1) != ss.charAt(ss.length() -2)){
+            return ss.length()-1;
+        }
+        return -1;
+
+    }
+
+    public static String sort(String s){
+        char[] arr = s.toCharArray();
+        Arrays.sort(arr);
+        System.out.println(arr);
+        return new String(arr);
     }
 }
