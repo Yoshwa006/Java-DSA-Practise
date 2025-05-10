@@ -8,7 +8,14 @@ public class SumOfOddEven {
 //        System.out.println(subarraySum(new int[]{1, 2, 3, 7, 5}, 12));
 //        System.out.println(digitFive(612575551));
 //        System.out.println(skipA("avyuauyavyusav"));
-        System.out.println(Dominos(new int[]{4,2,2,4}, new int[]{2,4,4,2}));
+//        System.out.println(Dominos(new int[]{4,2,2,4}, new int[]{2,4,4,2}));
+//        System.out.println(countSubarrWithEqualZeroAndOne(new int[]{0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1,
+//                0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+//                0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0,
+//                0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0,
+//                0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0
+//} , 7));
+        System.out.println(Arrays.deepToString(makezero(new int[][]{{2, 0, 3}, {1, 2, 4}, {3, 1, 0}})));
     }
 
 
@@ -673,6 +680,78 @@ public class SumOfOddEven {
                 }
         }return Math.min(bcnt,cnt);
     }
+    static int countSubarrWithEqualZeroAndOne(int arr[], int n) {
 
+        int cnt =0;
+        for(int i=0; i<n; i++){
+            int zero =0;
+            int one =0;
+            if(arr[i] == 0) zero++;
+            if(arr[i] == 1) one++;
+            for( int j = i+1; j<n; j++){
+                if(arr[j] == 0){
+                    zero++;
+                }
+                else{
+                    one++;
+                }
+                if( one == zero){
+                    cnt++;
+                }
+            }
+        }
+
+        return cnt;
+    }
+
+    static ArrayList<Integer> leftView(Node root) {
+        if(root == null){
+            return null;
+        }
+
+        ArrayList<Integer> list = new ArrayList<>();
+
+        list.add(root.data);
+
+        Stack<Node> st = new Stack<>();
+        st.push(root);
+        while(!st.isEmpty()){
+            Node curr = st.pop();
+            if(curr.left!= null) st.push(curr.left);
+            if(curr.right != null) st.push(curr.right);
+
+
+        }
+
+        return list;
+
+    }
+
+    static int[][] makezero(int[][] arr){
+        int n = arr.length;
+
+        boolean[] rows = new boolean[n];
+        boolean[] col = new boolean[n];
+
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                if(arr[i][j] == 0){
+                    rows[i] = true;
+                    col[j] =true;
+                }
+            }
+        }
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                if(rows[i]|| col[j]){
+                    arr[i][j] =0;
+                }
+            }
+        }
+
+        return arr;
+    }
 }
 

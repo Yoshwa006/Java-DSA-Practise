@@ -6,9 +6,8 @@ public class GraphDFS {
 
     public static void main(String[] args) {
         int n = 5; // Number of nodes
-        visited = new boolean[n]; // Track visited nodes
+         visited = new boolean[n]; // Track visited nodes
 
-        // Initialize adjacency list
         for (int i = 0; i < n; i++) graph.add(new ArrayList<>());
 
         // Add edges (undirected graph)
@@ -31,7 +30,6 @@ public class GraphDFS {
         visited[node] = true;
         System.out.print(node + " ");
 
-        // Visit all unvisited neighbors
         for (int neighbor : graph.get(node)) {
             if (!visited[neighbor]) {
                 dfs(neighbor);
@@ -39,8 +37,25 @@ public class GraphDFS {
         }
     }
 
-    public static void bfs(int node){
+     static void bfs(int node){
+        Queue<Integer> qu = new LinkedList<>();
 
+        Arrays.fill(visited,false);
+        qu.add(node);
+        visited[node] = true;
+
+        while(!qu.isEmpty()){
+            int d = qu.poll();
+            System.out.println(d);
+            for(int n : graph.get(d)){
+
+                if(!visited[n]){
+                    qu.add(n);
+                    visited[n] = true;
+                }
+
+            }
+        }
     }
 
 }
