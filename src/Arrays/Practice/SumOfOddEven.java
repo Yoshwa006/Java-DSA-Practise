@@ -1,5 +1,6 @@
 package Arrays.Practice;
 
+import javax.crypto.spec.PSource;
 import java.util.*;
 
 public class SumOfOddEven {
@@ -15,9 +16,21 @@ public class SumOfOddEven {
 //                0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0,
 //                0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0
 //} , 7));
-        System.out.println(Arrays.deepToString(makezero(new int[][]{{2, 0, 3}, {1, 2, 4}, {3, 1, 0}})));
+//        System.out.println(Arrays.deepToString(makezero(new int[][]{{2, 0, 3}, {1, 2, 4}, {3, 1, 0}})));
+//        System.out.println(nCr(4,1));
+//        System.out.println(getLongestSubsequence(new String[]{"e","a","b"}, new int[]{0,0,1}));
+//        moveZeroes(new int[]{4, 0, 5, 0, 6, 7, 0, 8, 4, 5, 4, 22, 0, 9, 0, 8, 90, 7, 90, 0, 7, 0, 7, 0, 0, 7, 7, 0, 8, 7, 8, 0, 8, 7, 6, 0});
+//        pyramid();
+//        star();
+//        invvpyramid();
+//        ppyramid();
+//        inversePyramid();
+//        box();
+//        System.out.println(findMaxAverage(new int[]{3,3,4,3,0} , 3));
+//        System.out.println(Arrays.toString(maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
+//        System.out.println(longestPalindrome(new String[]{"lc","cl","gg"}));
+        System.out.println(maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
     }
-
 
 
     static void sumofevenodd(int[] arr) {
@@ -610,26 +623,25 @@ public class SumOfOddEven {
 //        }
 //    }
 
-    public static int digitFive(int n){
-        if(n == 0){
+    public static int digitFive(int n) {
+        if (n == 0) {
             return 0;
         }
 
-        if(n % 10 == 5){
-            return 1 + digitFive(n/10);
-        }
-        else {
-            return digitFive(n/10);
+        if (n % 10 == 5) {
+            return 1 + digitFive(n / 10);
+        } else {
+            return digitFive(n / 10);
         }
     }
 
-    public static String skipA(String s){
+    public static String skipA(String s) {
         StringBuilder ans = new StringBuilder();
-        return helper(s,ans);
+        return helper(s, ans);
     }
 
-    public static String  helper(String s, StringBuilder ans){
-        if(s.isEmpty()){
+    public static String helper(String s, StringBuilder ans) {
+        if (s.isEmpty()) {
             return "";
         }
         if (s.charAt(0) != 'a') {
@@ -640,15 +652,15 @@ public class SumOfOddEven {
     }
 
 
-    public static String testingMethods(String s){
+    public static String testingMethods(String s) {
         return s.substring(1);
     }
 
-    public static int Dominos(int[] t, int[] b){
+    public static int Dominos(int[] t, int[] b) {
         int n = t.length;
-        int cnt=0;
-        int in =1 ;
-        for( int i=0; i<n; i++) {
+        int cnt = 0;
+        int in = 1;
+        for (int i = 0; i < n; i++) {
             if (in == 7) {
                 return -1;
             }
@@ -662,40 +674,40 @@ public class SumOfOddEven {
                 in++;
             }
         }
-        in=1;
-        int bcnt=0;
-            for( int i=0; i<n; i++){
-                if(in == 7){
-                    return -1;
+        in = 1;
+        int bcnt = 0;
+        for (int i = 0; i < n; i++) {
+            if (in == 7) {
+                return -1;
+            }
+            if (t[i] == in || b[i] == in) {
+                if (b[i] != in) {
+                    bcnt++;
                 }
-                if(t[i] == in || b[i] ==in) {
-                    if (b[i] != in) {
-                        bcnt++;
-                    }
-                }
-                else{
-                    bcnt=0;
-                    i=0;
-                    in++;
-                }
-        }return Math.min(bcnt,cnt);
+            } else {
+                bcnt = 0;
+                i = 0;
+                in++;
+            }
+        }
+        return Math.min(bcnt, cnt);
     }
+
     static int countSubarrWithEqualZeroAndOne(int arr[], int n) {
 
-        int cnt =0;
-        for(int i=0; i<n; i++){
-            int zero =0;
-            int one =0;
-            if(arr[i] == 0) zero++;
-            if(arr[i] == 1) one++;
-            for( int j = i+1; j<n; j++){
-                if(arr[j] == 0){
+        int cnt = 0;
+        for (int i = 0; i < n; i++) {
+            int zero = 0;
+            int one = 0;
+            if (arr[i] == 0) zero++;
+            if (arr[i] == 1) one++;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] == 0) {
                     zero++;
-                }
-                else{
+                } else {
                     one++;
                 }
-                if( one == zero){
+                if (one == zero) {
                     cnt++;
                 }
             }
@@ -705,7 +717,7 @@ public class SumOfOddEven {
     }
 
     static ArrayList<Integer> leftView(Node root) {
-        if(root == null){
+        if (root == null) {
             return null;
         }
 
@@ -715,10 +727,10 @@ public class SumOfOddEven {
 
         Stack<Node> st = new Stack<>();
         st.push(root);
-        while(!st.isEmpty()){
+        while (!st.isEmpty()) {
             Node curr = st.pop();
-            if(curr.left!= null) st.push(curr.left);
-            if(curr.right != null) st.push(curr.right);
+            if (curr.left != null) st.push(curr.left);
+            if (curr.right != null) st.push(curr.right);
 
 
         }
@@ -727,31 +739,361 @@ public class SumOfOddEven {
 
     }
 
-    static int[][] makezero(int[][] arr){
+    static int[][] makezero(int[][] arr) {
         int n = arr.length;
 
         boolean[] rows = new boolean[n];
         boolean[] col = new boolean[n];
 
 
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                if(arr[i][j] == 0){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (arr[i][j] == 0) {
                     rows[i] = true;
-                    col[j] =true;
+                    col[j] = true;
                 }
             }
         }
 
-        for(int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                if(rows[i]|| col[j]){
-                    arr[i][j] =0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (rows[i] || col[j]) {
+                    arr[i][j] = 0;
                 }
             }
         }
 
         return arr;
+    }
+
+    public static int nCr(int n, int r) {
+
+
+        //base cases
+        if (r == n) {
+            return 1;
+        }
+        if (r == 0) {
+            return 1;
+        }
+        if (r > n) {
+            return 0;
+        }
+
+
+        int upper = 1;
+        int t1 = n;
+
+        while (t1 > 0) {
+            upper *= t1;
+            t1--;
+        }
+
+        int t2 = n - r;
+        int l = 1;
+        while (t2 > 0) {
+            l *= t2;
+            t2--;
+        }
+
+        return upper / (l * 2);
+
+    }
+
+    public static List<String> getLongestSubsequence(String[] w, int[] g) {
+        List<String> ans = new ArrayList<>();
+
+
+        for (int i = 1; i < w.length; i++) {
+            if (g[i] != g[i - 1]) {
+                String t = w[i];
+                ans.add(t);
+            }
+        }
+
+        return ans;
+    }
+
+    public static void moveZeroes(int[] arr) {
+        int index = 0;
+        int d = index + 1;
+
+        //logic
+        while (d < arr.length) {
+
+            while (arr[index] != 0) {
+                index++;
+            }
+            if (arr[d] != 0) {
+                arr[index] = arr[d];
+                arr[d] = 0;
+            } else {
+                if (d == arr.length - 1) {
+                    break;
+                }
+                d++;
+
+            }
+        }
+
+
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void pyramid() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter number of lines :");
+        int lines = scanner.nextInt();
+
+        int start = 1, step = 1;
+
+        while (lines > 0) {
+            System.out.print(start + " ");
+            int s = step;
+            while (s > 0) {
+                s--;
+                System.out.print(++start + " ");
+            }
+            step++;
+            lines--;
+            start++;
+            System.out.println();
+        }
+    }
+
+    public static void star() {
+        int n = 5;
+        int step = 0;
+
+        while (n > 0) {
+            System.out.print("x ");
+
+            for (int j = 0; j < step; j++) {
+                System.out.print("x ");
+            }
+            step++;
+            System.out.println();
+            n--;
+        }
+    }
+
+    public static void invertedStar() {
+        int lines = 5;
+
+        while (lines > 0) {
+            for (int i = 0; i < lines; i++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+            lines--;
+        }
+    }
+
+    public static void ppyramid() {
+        int n = 5;
+        int step = 1;
+        int count = 0;
+        while (step <= n) {
+            for (int i = 0; i < n - step; i++) {
+                System.out.print(" ");
+            }
+            for (int i = 0; i < step; i++) {
+                System.out.print(++count + " ");
+            }
+            step++;
+            System.out.println();
+        }
+
+    }
+
+    public static void inversePyramid() {
+        int n = 5;
+        int step = 0;
+        while (n > 0) {
+            for (int i = 0; i < step; i++) {
+                System.out.print(" ");
+            }
+            for (int i = 0; i < n; i++) {
+                System.out.print("x ");
+            }
+            n--;
+            System.out.println();
+            step++;
+        }
+    }
+
+    public static void box() {
+        int n = 12;
+        int count = n;
+
+        //first line
+        for (int i = 0; i < n; i++) {
+            System.out.print("* ");
+        }
+        System.out.println();
+
+        //middle logic
+        while (count > 2) {
+            System.out.print("*");
+            for (int i = 0; i < (n - 2) * 2 + 1; i++) {
+                System.out.print(" ");
+            }
+            System.out.print("*");
+            System.out.println();
+            count--;
+        }
+
+        //last line
+        for (int i = 0; i < n; i++) {
+            System.out.print("* ");
+        }
+    }
+
+    public static void diamond() {
+        int n = 5;
+
+    }
+
+    public static boolean validMountainArray(int[] arr) {
+
+        int n = arr.length;
+        int peakindex = 0;
+        int peak = 0;
+        for (int i = 1; i < n - 1; i++) {
+
+            if (arr[i] == arr[i - 1]) {
+                return false;
+            }
+
+
+            if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+
+                peak = arr[i];
+                peakindex = i;
+                if (peakindex == 0 || peakindex == n - 1) return false;
+
+                break;
+            }
+
+        }
+
+        for (int i = peakindex + 1; i < n; i++) {
+            if (arr[i] >= arr[i - 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //    public List<Integer> topK(int[] arr){
+//        PriorityQueue<Integer> qu = new PriorityQueue<>();
+//        char ch = 'x';
+//        String temp = String.valueOf(ch);
+//        String s = "sduss";
+//        System.out.println(s.contains("sdu"));
+//    }
+    public static double findMaxAverage(int[] arr, int k) {
+        if (arr.length < 2) {
+            return (double) arr[0];
+        }
+        int curr = 0;
+        int max = 0;
+
+
+        for (int i = 0; i < k; i++) {
+            curr += arr[i];
+        }
+        max = curr;
+        int index = 0;
+        for (int i = k; i < arr.length; i++) {
+            curr -= arr[index];
+            curr = curr + arr[i];
+            max = Math.max(curr, max);
+            index++;
+        }
+
+        return (double) max / 4;
+    }
+
+    public static int[] maxSlidingWindow(int[] arr, int k) {
+        int l = 1, r = 1;
+        int curr = Integer.MIN_VALUE;
+        int index = -1;
+        int[] ans = new int[arr.length - k + 1];
+
+
+        for (int i = 0; i < k; i++) {
+            if (arr[i] > curr) {
+                curr = arr[i];
+            }
+        }
+
+        arr[++index] = curr;
+        curr = Integer.MIN_VALUE;
+
+        while (l + k < arr.length) {
+
+            if (r == k) {
+                curr = Integer.MIN_VALUE;
+                r = 1;
+            }
+
+            for (int i = l; i < l + k; i++) {
+                if (arr[i] > curr) {
+                    curr = arr[i];
+                }
+            }
+
+            l++;
+            r++;
+            ans[++index] = curr;
+        }
+        return ans;
+    }
+
+    public static int longestPalindrome(String[] words) {
+
+        int count = 0;
+        List<String> list = new ArrayList<>();
+
+
+        for (String s : words) {
+
+            if (s.charAt(0) == s.charAt(1)) {
+                if (count > 4) {
+                    count += 2;
+                }
+            }
+
+            if (list.contains(s)) {
+                count += 4;
+                list.remove(s);
+                continue;
+            }
+            String rev = "" + s.charAt(1) + s.charAt(0);
+            if (list.contains(rev)) {
+                count += 4;
+                list.remove(rev);
+                continue;
+            }
+            list.add(s);
+        }
+        return count;
+    }
+
+    public static int maxSubArray(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i; j < arr.length; j++) {
+                sum = 0;
+                for (int k = i; k < j; k++) {
+                    sum += arr[k];
+                    if (sum > max) max = sum;
+                }
+            }
+        }
+        return max;
     }
 }
 

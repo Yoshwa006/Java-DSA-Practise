@@ -1,5 +1,9 @@
 package String;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
 public class checklastlettter {
 
     public static void main(String[] args) {
@@ -7,7 +11,9 @@ public class checklastlettter {
 //        System.out.println(reverseOnlyLetters("ab-cd"));
 //        System.out.println(lemonadeChange(new int[]{5,5,5,10,20}));
 //        System.out.println(skip5("seedfasasfafafafafaaaaaaarr"));
-        System.out.println(firstUniqChar("loveleetcode"));
+//        System.out.println(firstUniqChar("loveleetcode"));
+//            sortChar();
+        System.out.println(allAnagrams("cbaebabacd" , "abc"));
     }
 
     public static void isPalindrome(String s) {
@@ -174,5 +180,50 @@ public class checklastlettter {
         Arrays.sort(arr);
         System.out.println(arr);
         return new String(arr);
+    }
+
+    public static void sortChar(){
+        char[] ch  = new char[]{'a' ,'y', 'c', 'b'};
+        Arrays.sort(ch);
+        String s  = String.valueOf(ch);
+        System.out.println(s);
+    }
+
+    public static List<Integer> allAnagrams(String s, String p){
+
+                List<Integer> list = new ArrayList<>();
+                if(s.length() < p.length()) {
+                    return list;
+                }
+
+                int[] freqS = new int[26];
+                int[] freqP = new int[26];
+
+
+                for(int i=0; i<p.length(); i++) {
+                    freqS[s.charAt(i)-'a']++;
+                    freqP[p.charAt(i)-'a']++;
+                }
+
+                if(Arrays.equals(freqS, freqP)) {
+                    list.add(0);
+                }
+
+                int start = 0;
+                int end = p.length();
+
+                while(end < s.length()) {
+
+                    freqS[s.charAt(start)-'a']--;
+                    freqS[s.charAt(end)-'a']++;
+
+                    if(Arrays.equals(freqS, freqP)) {
+                        list.add(start+1);
+                    }
+                    end++;
+                    start++;
+                }
+                return list;
+
     }
 }
