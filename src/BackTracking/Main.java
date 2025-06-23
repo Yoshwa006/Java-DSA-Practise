@@ -8,7 +8,7 @@ public class Main {
         List<String> ans = new ArrayList<>();
 
         ans = permute("ABA");
-//        System.out.println(ans);
+        System.out.println(ans);
         System.out.println(subsets(new int[]{1,2,3}));
     }
 
@@ -16,12 +16,12 @@ public class Main {
     public static List<String> permute(String s){
         boolean[] visit = new boolean[s.length()];
         List<String> result =new ArrayList<>();
-        backtrack(s,"", visit, result);
+        ABCbacktrack(s,"", visit, result);
         return result;
 
     }
 
-    public static void backtrack(String s, String curr, boolean[] visit, List<String> result){
+    public static void ABCbacktrack(String s, String curr, boolean[] visit, List<String> result){
        if(curr.length() == s.length()){
             result.add(curr);
         }
@@ -31,23 +31,23 @@ public class Main {
                 continue;
             }
             visit[i] = true;
-            backtrack(s,curr+s.charAt(i),visit,result);
+            ABCbacktrack(s,curr+s.charAt(i),visit,result);
             visit[i] =false;
         }
     }
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        backtrack(0, nums, new ArrayList<>(), result) ;
+        ABCbacktrack(0, nums, new ArrayList<>(), result) ;
         result.removeFirst();
         return result;
     }
 
-    private static void backtrack(int index, int[] nums, List<Integer> current, List<List<Integer>> result) {
+    private static void ABCbacktrack(int index, int[] nums, List<Integer> current, List<List<Integer>> result) {
         result.add(new ArrayList<>(current)); // Add the current subset
 
         for (int i = index; i < nums.length; i++) {
             current.add(nums[i]); // Include
-            backtrack(i + 1, nums, current, result); // Recurse
+            ABCbacktrack(i + 1, nums, current, result); // Recurse
             current.removeLast(); // Backtrack
         }
     }

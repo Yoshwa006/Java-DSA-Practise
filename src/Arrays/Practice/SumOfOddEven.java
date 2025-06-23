@@ -29,7 +29,10 @@ public class SumOfOddEven {
 //        System.out.println(findMaxAverage(new int[]{3,3,4,3,0} , 3));
 //        System.out.println(Arrays.toString(maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3)));
 //        System.out.println(longestPalindrome(new String[]{"lc","cl","gg"}));
-        System.out.println(maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
+//        System.out.println(maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));1
+//        System.out.println(numRescueBoats(new int[]{3,2,2,1} , 3));
+//        System.out.println(adjacent(new int[]{1, 2, 4}));
+        System.out.println(MaxDifference(11891));
     }
 
 
@@ -1095,5 +1098,66 @@ public class SumOfOddEven {
         }
         return max;
     }
-}
 
+    public static int numRescueBoats(int[] arr, int limit) {
+        int l = 0;
+        int r = arr.length - 1;
+        int count = 0;
+        Arrays.sort(arr);
+        while (l <= r) {
+
+            while (arr[r] == limit) {
+                count++;
+                r--;
+            }
+            if (arr[l] + arr[r] <= limit) {
+                count++;
+            }
+            l++;
+            r--;
+        }
+
+        return count;
+    }
+
+    public static int adjacent(int[] arr) {
+
+
+        int max = Math.abs(arr[0] - arr[arr.length - 1]);
+        int d = max;
+        for (int i = 1; i < arr.length; i++) {
+            d = Math.abs(arr[i] - arr[i - 1]);
+            if (d > max) {
+                max = d;
+            }
+        }
+
+        return d;
+    }
+
+    public static int MaxDifference(int num) {
+        String s = String.valueOf(num);
+
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != '9') {
+               s=  s.replace(s.charAt(i), '9');
+                break;
+            }
+        }
+        int max = Integer.parseInt(s);
+        s = String.valueOf(num);
+
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != '0') {
+                s.replace(s.charAt(i), '0');
+                break;
+            }
+        }
+
+        int min = Integer.parseInt(s);
+
+        return max - min;
+    }
+}

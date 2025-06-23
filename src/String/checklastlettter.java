@@ -1,8 +1,5 @@
 package String;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class checklastlettter {
 
@@ -13,7 +10,8 @@ public class checklastlettter {
 //        System.out.println(skip5("seedfasasfafafafafaaaaaaarr"));
 //        System.out.println(firstUniqChar("loveleetcode"));
 //            sortChar();
-        System.out.println(allAnagrams("cbaebabacd" , "abc"));
+//        System.out.println(allAnagrams("cbaebabacd" , "abc"));
+        System.out.println(vowelStrings(new String[]{"are","amy","u"}, 0 ,2));
     }
 
     public static void isPalindrome(String s) {
@@ -225,5 +223,25 @@ public class checklastlettter {
                 }
                 return list;
 
+    }
+    public static int vowelStrings(String[] words, int l, int r) {
+        HashSet<Character> set = new HashSet<>();
+
+        int count =0;
+        set.add('a');
+        set.add('e');
+        set.add('i');
+        set.add('o');
+        set.add('u');
+
+
+        for(String s : words){
+            if(l < s.length() && r < s.length()){
+                if(set.contains(s.charAt(l)) && set.contains(s.charAt(r))){
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 }

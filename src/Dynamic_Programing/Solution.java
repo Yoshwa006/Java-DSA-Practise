@@ -13,7 +13,6 @@ class Solution {
             }
             return dp[0];
         }
-
     public static void main(String[] args) {
         System.out.println(Solution.mostPoints(new int[][]{{3,2},{4,3},{4,4},{2,5}}));
     }

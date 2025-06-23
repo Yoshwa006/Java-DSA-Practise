@@ -2,7 +2,8 @@ package CodeForces;
 
 public class TungTungSahur {
     public static void main(String[] args) {
-        System.out.println(run("LLRLRLRRL" , "LLLRLRRLLRRRL"));
+//        System.out.println(run("LLRLRLRRL" , "LLLRLRRLLRRRL"));4
+        System.out.println(climbingStairs(3));
     }
 
     static boolean run(String p, String s) {
@@ -35,6 +36,17 @@ public class TungTungSahur {
         // Both strings should be fully matched
         return i == p.length() && j == s.length();
     }
+public static int climbingStairs(int n){
+            int[] dp = new int[n+1];
 
 
-}
+            dp[0] = 0;
+            dp[1] = 1;
+
+            for(int i =2; i<=n; i++){
+                dp[i] = dp[i-1] + dp[i-2];
+            }
+
+            return dp[n];
+        }
+    }
