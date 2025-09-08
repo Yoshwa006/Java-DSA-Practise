@@ -38,7 +38,7 @@ public class Main {
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         ABCbacktrack(0, nums, new ArrayList<>(), result) ;
-        result.removeFirst();
+        result.remove(0);
         return result;
     }
 
@@ -48,7 +48,7 @@ public class Main {
         for (int i = index; i < nums.length; i++) {
             current.add(nums[i]); // Include
             ABCbacktrack(i + 1, nums, current, result); // Recurse
-            current.removeLast(); // Backtrack
+            current.remove(0); // Backtrack
         }
     }
 

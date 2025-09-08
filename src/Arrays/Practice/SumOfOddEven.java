@@ -32,8 +32,8 @@ public class SumOfOddEven {
 //        System.out.println(maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));1
 //        System.out.println(numRescueBoats(new int[]{3,2,2,1} , 3));
 //        System.out.println(adjacent(new int[]{1, 2, 4}));
-        System.out.println(MaxDifference(11891));
-    }
+        System.out.println(Arrays.toString(gen(4)));
+        }
 
 
     static void sumofevenodd(int[] arr) {
@@ -1141,7 +1141,7 @@ public class SumOfOddEven {
 
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != '9') {
-               s=  s.replace(s.charAt(i), '9');
+                s = s.replace(s.charAt(i), '9');
                 break;
             }
         }
@@ -1159,5 +1159,33 @@ public class SumOfOddEven {
         int min = Integer.parseInt(s);
 
         return max - min;
+    }
+
+    public static int[] gen(int n) {
+        int[] res = new int[n];
+        if (n % 2 == 0) {
+            int start = n / 2;
+            start = -start;
+
+            for (int i = 0; i < n; i++) {
+                if (start == 0) {
+                    start++;
+                    i--;
+                    continue;
+                }
+                res[i] = start;
+                start++;
+            }
+        } else {
+            int start = n / 2;
+            start = -start;
+
+            for (int i = 0; i < n; i++) {
+                res[i] = start;
+                start++;
+            }
+        }
+
+        return res;
     }
 }
